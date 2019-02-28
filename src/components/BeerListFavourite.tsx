@@ -1,12 +1,12 @@
 
-import React from 'react';
+import * as React from 'react';
 import {
   ListGroup,
   ListGroupItem,
   Button,
 } from 'reactstrap';
 
-class BeerListFavourite extends React.Component {
+class BeerListFavourite extends React.Component<any, any> {
   // A component that displays favourite beers in a list format
 
   constructor(props) {

@@ -1,12 +1,12 @@
 
-import React from 'react';
+import * as React from 'react';
 import {
   ListGroup,
   ListGroupItem,
   Input,
 } from 'reactstrap';
 
-class BeerList extends React.Component {
+class BeerList extends React.Component<any, any> {
   // A component that displays beers in a list format
 
   constructor(props) {
@@ -20,7 +20,7 @@ class BeerList extends React.Component {
         const addFavouriteBeer = this.props.addFavouriteBeer;
         return (
           <ListGroupItem key={`${singleBeer.id}`}>
-            <Input disabled={this.props.favouriteBeers.length >= 10 ? true : null} onClick={() => addFavouriteBeer(singleBeer)} type="checkbox" />
+            <Input disabled={this.props.favouriteBeers.length >= 10 ? true : null } onClick={() => addFavouriteBeer(singleBeer)} type="checkbox" />
             {singleBeer.name}
           </ListGroupItem>
         );

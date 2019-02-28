@@ -1,13 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import { Button } from 'reactstrap';
 import punkApiService from '../service/punkapi-service';
 import BeerList from './BeerList';
 import FavouriteBeerList from './BeerListFavourite';
 
-class App extends React.Component {
+class App extends React.Component<any, any> {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       allBeers: [],
       favouriteBeers: [],
@@ -27,11 +27,11 @@ class App extends React.Component {
     } else {
       // If there is a 'favouriteBeers' key on the localStorage,
       // we can just get out initial favourite beers from there
-      this.setState(() => ({ favouriteBeers: JSON.parse(localStorage.getItem('favouriteBeers')) }));
+      this.setState(() => ({ favouriteBeers: JSON.parse(localStorage.getItem('favouriteBeers') || '{}') }));
     }
   }
 
-  getRandomBeerFn() {
+  getRandomBeerFn(): void {
     punkApiService.getRandomBeer().subscribe(randomBeer => {
       if (this.state.allBeers.length < 10 && !this.isBeerInArray(randomBeer, this.state.allBeers)
         && !this.isBeerInArray(randomBeer, this.state.favouriteBeers)) {
@@ -47,7 +47,7 @@ class App extends React.Component {
     });
   }
 
-  isBeerInArray(beerToCheck, arrayToCheck) {
+  isBeerInArray(beerToCheck, arrayToCheck): boolean {
     let result = false;
     arrayToCheck.forEach( // Performance can be improved with a for loop here
       singleBeerInState => {
@@ -59,7 +59,7 @@ class App extends React.Component {
     return result;
   }
 
-  removeFavouriteBeer(singleFavouriteBeer) {
+  removeFavouriteBeer(singleFavouriteBeer): void {
 
     let beerToRemoveId;
     for (let i = 0; i < this.state.favouriteBeers.length; i++) {
@@ -73,7 +73,7 @@ class App extends React.Component {
     }
   }
 
-  addFavouriteBeer(singleBeer) {
+  addFavouriteBeer(singleBeer): void {
 
     if (!this.isBeerInArray(singleBeer, this.state.favouriteBeers)) {
       let beerToRemoveIndex;
@@ -94,6 +94,7 @@ class App extends React.Component {
   updateLocalStorage(updatedState) {
     // Change local storage state for favourites
     localStorage.setItem('favouriteBeers', JSON.stringify(updatedState));
+    return undefined;
   }
 
   render() {

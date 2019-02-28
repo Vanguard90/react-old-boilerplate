@@ -16,13 +16,18 @@ module.exports = {
     },
     historyApiFallback: true,
   },
-  entry: [path.join(__dirname, '/src/index.jsx')],
+  entry: [path.join(__dirname, '/src/index.tsx')],
+  output: {
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
+    path: path.join(__dirname, '/build'),
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
-        loaders: ['babel-loader'],
+        loaders: ['awesome-typescript-loader'],
       },
       {
         test: /\.scss$|\.css$/,
@@ -37,13 +42,9 @@ module.exports = {
       },
     ],
   },
+  devtool: 'source-map',
   resolve: {
-    extensions: ['.js', '.jsx'],
-  },
-  output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    path: path.join(__dirname, '/build'),
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
   plugins: [HTMLWebpackPluginConfig],
   optimization: {
