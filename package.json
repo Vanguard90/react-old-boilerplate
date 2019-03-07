@@ -1,14 +1,15 @@
 {
-  "name": "punk-api-react-assignment",
-  "version": "1.0.0",
-  "description": "punk-api react assignment",
+  "name": "enes-react-boilerplate",
+  "version": "0.6.0",
+  "description": "react boilerplate to create a quick base to create applications",
   "main": "index.js",
   "author": "Enes Kirimi",
   "license": "",
   "repository": {},
   "scripts": {
     "start": "webpack-dev-server --open --mode=development",
-    "build": "webpack --mode=production"
+    "build": "webpack --mode=production",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
