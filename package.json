@@ -51,7 +51,13 @@
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "reactstrap": "^7.1.0",
-    "rxjs": "6.3.3"
+    "rxjs": "6.3.3",
+    "ts-jest": "^24.0.0"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    }
   },
   "keywords": []
 }
