@@ -57,7 +57,8 @@
   "jest": {
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
-    }
+    },
+    "setupFiles": ["<rootDir>/setup-react-adapter.ts"]
   },
   "keywords": []
 }
